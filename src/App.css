@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+* > * {
+    font-family: 'Montserrat', sans-serif; 
+    margin: 0;
+}
+
+body {
+
+}
+
+.App {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recover-pass {
+  text-align: end;
+}
+
+#form > input{
+    border-radius: 10px;
+  }
+  
+.register{
+  text-align: center;
+  height: 100%;
+  width: 100vw;
+  display:flex;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  /* box-shadow: 1px 3px 10px #e9ecef; */
+  background-color: white;
+}
+
+.register span{
+  color: #adb5bd;
+}
+
+.input-text {
+    text-align: start;
+    margin-left: 3px;
+}
+
+
+#form{
+  max-width: 420px;
+  width: 100vw;
+  margin: 2em auto;
+}
+
+#form >  input, .btn{
+  border: 1px solid #e9ecef;
+  padding: .9em 1em;
+}
+
+#form >  input{
+    display: flex;
+    border:0.5px solid black;
+
+}
+
+
+#form > input:focus{
+  outline: none;
+}
+
+#form > .btn{
+  background-color: #08C642;
+  color: #e9ecef;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#form > .btn-sgn{
+  background-color: #1076B5;
+  color: #e9ecef;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+
+#form >  input, .btn-sgn{
+  border: 1px solid #e9ecef;
+  padding: .9em 1em;
+}
+.flex{
+  display: flex;
+  gap: 1em;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.register .col-1{
+  margin: auto;
+  padding: 3em 0;
+}
+
+.svg {
+    display: flex;
+    margin-top: 100px;
+}
+
+.register .col-2 img{
+  width: 680px;
+  height: 100%;
+  object-fit: cover;
+  align-self: flex-end;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: none;
+}
+
+@media screen and (min-width: 860px)  {
+  .register .col-2 img{
+    display: initial;
+  }
+}

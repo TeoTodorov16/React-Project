@@ -1,0 +1,45 @@
+.search-form{
+    width: 100%;
+    max-width: 680px;
+}
+.search-form-elem{
+    padding: 1.4rem 2.8rem;
+    border-radius: 3.8rem;
+}
+.search-form-elem .form-control{
+    width: 300px;
+    font-size: 2rem;
+    padding: 0.6rem;
+}
+.search-form-elem .form-control::placeholder{
+    opacity: 0.9;
+}
+
+.all-books-heading{
+    margin: 10px;
+}
+
+.container{
+    padding-top: 25px;
+    padding-left: 45px;
+}
+
+.form-control {
+    width: 350px;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    outline: none;    
+}
+
+
+.btn-search{
+    margin-right: 90px;
+}
+
+.all-books-heading{
+    font-weight: bold;
+}
