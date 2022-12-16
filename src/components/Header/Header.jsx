@@ -10,6 +10,7 @@ const Header = () => {
                 <Profile></Profile>
 
                 <SearchForm />
+               
                 
             </div>
         </div>
