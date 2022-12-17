@@ -5,7 +5,6 @@ import Loading from "../Loader/Loader";
 import coverImg from "../../assets/33f06fd5-2b95-4272-ad64-3f5483d90811.png";
 import "./BookList.css";
 
-//https://covers.openlibrary.org/b/id/240727-S.jpg
 
 const BookList = () => {
   const {books, loading, resultTitle} = useGlobalContext();
