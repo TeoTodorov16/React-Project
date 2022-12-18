@@ -25,10 +25,10 @@
 .form-control input,
 .form-control select {
   font: inherit;
-  padding: 0.5em 1em ;
-  padding-right: 13em;
-  border-radius: 4px;
+  padding: 0.8em;
+  border-radius: 7px;
   border: 1px solid #ccc;
+  width: 100rem;
   max-width: 100%;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .control-group .form-control {
-  
+  min-width: 41.9rem;
   flex: 1;
 }
 
@@ -128,7 +128,7 @@ button:disabled:active {
 
 .input-text {
     text-align: start;
-    margin-left: 10px;
+    margin-left: 3px;
 }
 
 
