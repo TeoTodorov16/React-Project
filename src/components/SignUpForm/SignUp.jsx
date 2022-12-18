@@ -13,22 +13,23 @@ export default function SignUp() {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    {/* Refactorying the Code ==> */} 
 
     const {
-        value: firstNameValue,
-        isValid: firstNameIsValid,
-        hasError: firstNameHasError,
-        valueChangeHandler: firstNameChangeHandler,
-        inputBlurHandler: firstNameBlurHandler,
-        reset: resetFirstName,
+        value: firstPassValue,
+        isValid: firstPassIsValid,
+        hasError: firstPassHasError,
+        valueChangeHandler: firstPassChangeHandler,
+        inputBlurHandler: firstPassBlurHandler,
+        reset: resetFirstPass,
       } = useInput(isNotEmpty);
       const {
-        value: lastNameValue,
-        isValid: lastNameIsValid,
-        hasError: lastNameHasError,
-        valueChangeHandler: lastNameChangeHandler,
-        inputBlurHandler: lastNameBlurHandler,
-        reset: resetLastName,
+        value: PassValue,
+        isValid: lastIsValid,
+        hasError: lastHasError,
+        valueChangeHandler: PassChangeHandler,
+        inputBlurHandler: PassBlurHandler,
+        reset: resetLastPass,
       } = useInput(isNotEmpty);
       const {
         value: emailValue,
@@ -41,7 +42,7 @@ export default function SignUp() {
     
       let formIsValid = false;
     
-      if (firstNameIsValid && lastNameIsValid && emailIsValid) {
+      if (firstPassIsValid && lastIsValid && emailIsValid) {
         formIsValid = true;
       }
     
@@ -53,18 +54,19 @@ export default function SignUp() {
         }
     
         console.log('Submitted!');
-        console.log(firstNameValue, lastNameValue, emailValue);
+        console.log(firstPassValue, PassValue, emailValue);
     
-        resetFirstName();
-        resetLastName();
+        resetFirstPass();
+        resetLastPass();
         resetEmail();
       };
     
-      const firstNameClasses = firstNameHasError ? 'form-control invalid' : 'form-control';
-      const lastNameClasses = lastNameHasError ? 'form-control invalid' : 'form-control';
+      const firstClasses = firstPassHasError ? 'form-control invalid' : 'form-control';
+      const lastPassClasses = lastHasError ? 'form-control invalid' : 'form-control';
       const emailClasses = emailHasError ? 'form-control invalid' : 'form-control';
 
 
+      {/* Refactorying the Code ==> */} 
     class Test extends React.Component {
         onClick(event) {
             makeFetch();
@@ -113,6 +115,8 @@ export default function SignUp() {
 
     };
 
+    {/* Refactorying the Code ==> */} 
+
     const navigate = useNavigate();
 
     const sendLogin = () => {
@@ -123,10 +127,13 @@ export default function SignUp() {
         navigate("/Home");
     };
 
+
+    {/* Refactorying the Code ==> */} 
+    
     return (
         <form onSubmit={submitHandler}>
             <div className='control-group'>
-                <div className={firstNameClasses}>
+                <div className={firstClasses}>
                     <div className='register'>
                         <div className='col-1'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="338.301" height="182.362" viewBox="0 0 378.301 82.362">
@@ -137,43 +144,43 @@ export default function SignUp() {
                             <h4>CREATE YOUR PROFILE</h4>
                             <section id="form" className='flex flex-col'>
                                 <div className={emailClasses}>
-                                    <label htmlFor='name' className='input-text'>Email</label>
+                                    <label htmlFor='email' className='input-text'>Email</label>
                                     <input
                                     placeholder='Email'
                                     type='text'
-                                    id='name'
+                                    id='email'
                                     value={emailValue}
                                     onChange={emailChangeHandler}
                                     onBlur={emailBlurHandler}
                                     >
-                                    </input> {/* I put text in placeholder just to showcase that it looks cool as well*/}
+                                    </input>
                                     {emailHasError && <p className="error-text">Please enter a valid email address.</p>}
                                 </div>
-                                <div className={lastNameClasses}> 
-                                    <label htmlFor='name' className='input-text'>Password</label>  
+                                <div className={lastPassClasses}> 
+                                    <label htmlFor='pass' className='input-text'>Password</label>  
                                     <input 
                                     placeholder='Password'
                                     type='text'
-                                    id='name'
-                                    value={lastNameValue}
-                                    onChange={lastNameChangeHandler}
-                                    onBlur={lastNameBlurHandler}
+                                    id='pass'
+                                    value={PassValue}
+                                    onChange={PassChangeHandler}
+                                    onBlur={PassBlurHandler}
                                     >
-                                    </input> {/* still managed to add new text and line it perfectly with the input accordingly to the Design*/}
-                                    {lastNameHasError && <p className="error-text">Please enter valid Password.</p>}
+                                    </input> 
+                                    {lastHasError && <p className="error-text">Please enter valid Password.</p>}
                                 </div>
-                                <div className={firstNameClasses}>
-                                    <label htmlFor='name' className='input-text'>Repeat password</label>  
+                                <div className={firstClasses}>
+                                    <label htmlFor='pass' className='input-text'>Repeat password</label>  
                                     <input 
                                     placeholder='Repeat password'
                                     type='text'
-                                    id='name'
-                                    value={firstNameValue}
-                                    onChange={firstNameChangeHandler}
-                                    onBlur={firstNameBlurHandler}
+                                    id='pass'
+                                    value={firstPassValue}
+                                    onChange={firstPassChangeHandler}
+                                    onBlur={firstPassBlurHandler}
                                     >
-                                    </input> {/* still managed to add new text and line it perfectly with the input accordingly to the Design*/}
-                                    {firstNameHasError && <p className="error-text">Please enter valid Password.</p>}
+                                    </input> 
+                                    {firstPassHasError && <p className="error-text">Please enter valid Password.</p>}
                                 </div>
                                 <br></br>
                                 <button disabled={!formIsValid} className="btn-sgn" onClick={() => { makeFetch(); sendHome();}}>SING UP</button>

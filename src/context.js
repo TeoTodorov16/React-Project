@@ -5,11 +5,16 @@ import { useCallback } from 'react';
 const URL = "http://openlibrary.org/search.json?title=";
 const AppContext = React.createContext();
 
+{/* Refactorying the Code ==> */} 
+
 const AppProvider = ({children}) => {
     const [searchTerm, setSearchTerm] = useState("the lost world");
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [resultTitle, setResultTitle] = useState("");
+
+
+{/* Refactorying the Code ==> */} 
 
     const fetchBooks = useCallback(async() => {
         setLoading(true);
@@ -50,6 +55,8 @@ const AppProvider = ({children}) => {
         }
     }, [searchTerm]);
 
+    {/* Refactorying the Code ==> */} 
+    
     useEffect(() => {
         fetchBooks();
     }, [searchTerm, fetchBooks]);

@@ -10,13 +10,15 @@ const LogIn = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  {/* Refactorying the Code ==> */} 
+  
     const {
-        value: enteredName,
-        isValid: enteredNameIsValid,
-        hasError: nameInputHasError,
-        valueChangeHandler: nameChangedHandler,
-        inputBlurHandler: nameBlurHandler,
-        reset: resetNameInput,
+        value: enteredPass,
+        isValid: enteredPassIsValid,
+        hasError: passInputHasError,
+        valueChangeHandler: passChangedHandler,
+        inputBlurHandler: passBlurHandler,
+        reset: resetPassInput,
       } = useInput((value) => value.trim() !== '');
     
       const {
@@ -30,25 +32,25 @@ const LogIn = () => {
     
       let formIsValid = false;
     
-      if (enteredNameIsValid && enteredEmailIsValid) {
+      if (enteredPassIsValid && enteredEmailIsValid) {
         formIsValid = true;
       }
     
       const formSubmissionHandler = (event) => {
         event.preventDefault();
     
-        if (!enteredNameIsValid) {
+        if (!enteredPassIsValid) {
           return;
         }
     
-        console.log(enteredName);
+        console.log(enteredPass);
     
-        // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
-        resetNameInput();
+        // passInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
+        resetPassInput();
         resetEmailInput();
       };
     
-      const nameInputClasses = nameInputHasError
+      const passInputClasses = passInputHasError
         ? 'form-control invalid'
         : 'form-control';
     
@@ -56,9 +58,9 @@ const LogIn = () => {
         ? 'form-control invalid'
         : 'form-control';
 
-    {/* // const nameInputRef = useRef(); - Alternative to useState for listening to user input
-       const [enteredName, setEnteredName] = useState('');
-       const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+    {/* // const passInputRef = useRef(); - Alternative to useState for listening to user input
+       const [enteredPass, setEnteredPass] = useState('');
+       const [enteredPassTouched, setEnteredPassTouched] = useState(false);
 
        const [formIsValid, setFormIsValid] = useState(false);
 
@@ -66,20 +68,20 @@ const LogIn = () => {
        const [enteredPassTouched, setEnteredPassTouched] = useState(false);
 
 
-     const enteredNameIsValid = enteredName.trim() !== '';
-     const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+     const enteredPassIsValid = enteredPass.trim() !== '';
+     const passInputIsInvalid = !enteredPassIsValid && enteredPassTouched;
 
    useEffect(() => {
-      if (enteredNameIsValid)
-   }, [enteredNameIsValid]);
+      if (enteredPassIsValid)
+   }, [enteredPassIsValid]);
 
 
-     const nameInputChangeHandler = (event) => {
-       setEnteredName(event.target.value);
+     const passInputChangeHandler = (event) => {
+       setEnteredPass(event.target.value);
      };
 
-     const nameInputBlurHandler = event => {
-        setEnteredNameTouched(true);
+     const passInputBlurHandler = event => {
+        setEnteredPassTouched(true);
      }
    
      
@@ -88,36 +90,37 @@ const LogIn = () => {
        event.preventDefault(); {/*This is a prevent sending the HTTP request by default in the browser 
        (wont reload the page automatically)
    
-       setEnteredNameTouched(true);
+       setEnteredPassTouched(true);
    
-       if (!enteredNameIsValid) {
+       if (!enteredPassIsValid) {
          return;
        }
       
-       console.log(enteredName);
+       console.log(enteredPass);
    
 
        //Pass
 
-           // const enteredValue = nameInputRef.current.value; 
+           // const enteredValue = passInputRef.current.value; 
            // console.log(enteredValue) - { Alternative to useState for listening to user input 
            // only if we need it ones that's why i left the useState alternative because its more functional 
            // in my opinion }
    
-           // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
+           // passInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
            
-       setEnteredName('');
-       setEnteredNameTouched(false);
+       setEnteredPass('');
+       setEnteredPassTouched(false);
 
      };     
 
     
      
-     const InputClasses = nameInputIsInvalid
+     const InputClasses = passInputIsInvalid
        ? 'form-control invalid'
     : 'form-control'; */}
 
 
+    {/* Refactorying the Code ==> */} 
     class Test extends React.Component {
         onClick(event) {
             makeFetch()
@@ -167,6 +170,8 @@ const LogIn = () => {
         alert("Congratulations! You are Logged In :)")
     };
 
+    {/* Refactorying the Code ==> */} 
+
     const navigate = useNavigate();
 
 
@@ -184,11 +189,11 @@ const LogIn = () => {
 
 
     {/*This is a comment*/}
-
+    
 
     return (
         <form onSubmit={formSubmissionHandler}>
-            <div className={nameInputClasses}>
+            <div className={passInputClasses}>
                 <div className='register'>
                     <div className='col-1'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="338.301" height="182.362" viewBox="0 0 378.301 82.362">
@@ -212,11 +217,11 @@ const LogIn = () => {
                             <input
                               type='password'
                               placeholder='Password' 
-                              onChange={nameChangedHandler}
-                              onBlur={nameBlurHandler}
-                              value={enteredName}
+                              onChange={passChangedHandler}
+                              onBlur={passBlurHandler}
+                              value={enteredPass}
                               />
-                            {nameInputHasError && (
+                            {passInputHasError && (
                             <p className='error-text'>Password must not be empty.</p>
                             )} 
                             <a href="#" className='recover-pass' onClick={recoverPassword}>Recover password</a>
