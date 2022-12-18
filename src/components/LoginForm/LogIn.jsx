@@ -8,6 +8,8 @@ import useInput from '../../my_hooks/use_input';
 
 const LogIn = () => {
 
+  const [isLoading, setIsLoading] = useState(false);
+
     const {
         value: enteredName,
         isValid: enteredNameIsValid,
@@ -128,7 +130,7 @@ const LogIn = () => {
         }
     }
 
-    const makeFetch = async () => {
+    const makeFetch = async (data) => {
         await fetch("https://books-library-dev.herokuapp.com/api/user/login", {
             method: 'POST',
             headers: {
@@ -138,13 +140,31 @@ const LogIn = () => {
             body: JSON.stringify({
                 "username": "elka",
                 "password": "123456"
-            })
+            }) 
         })
-        .then(res => {
-            return res.json()
+        .then((res) => {
+          setIsLoading(false);
+          if (res.ok) {
+            return res.json();
+          } else {
+            return res.json().then((data) => {
+              let errorMessage = 'Authentication failed!';
+              // if (data && data.error && data.error.message) {
+              //   errorMessage = data.error.message;
+              // }
+  
+              throw new Error(errorMessage);
+            });
+          }
         })
-        .then(data => console.log(data))
-        .catch(error => console.log('Error'))
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+
+        alert("Congratulations! You are Logged In :)")
     };
 
     const navigate = useNavigate();

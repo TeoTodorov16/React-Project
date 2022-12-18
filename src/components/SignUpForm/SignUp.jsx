@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../App.css';
 import image from '../../assets/Group 19445.png';
 import {useNavigate} from 'react-router-dom';
@@ -10,6 +10,9 @@ const isEmail = (value) => value.includes('@');
 
 
 export default function SignUp() {
+
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const {
         value: firstNameValue,
@@ -82,16 +85,32 @@ export default function SignUp() {
                 'Authorization': 'Bearer eyJhbGciOiJIUzI...'
             },
             body: JSON.stringify({
-                "username": "elkat",     // String with min 4 symbols, no special symbols, except _
-                "password": "123456",
-            })
+                "username": "elka",
+                "password": "123456"
+            }) 
         })
-        .then(res => {
-           return res.json()
+        .then((res) => {
+          setIsLoading(false);
+          if (res.ok) {
+            return res.json();
+          } else {
+            return res.json().then((data) => {
+              let errorMessage = 'Authentication failed!';
+              // if (data && data.error && data.error.message) {
+              //   errorMessage = data.error.message;
+              // }
+  
+              throw new Error(errorMessage);
+            });
+          }
         })
-        .then(data => console.log(data))
-        .catch(error => console.log('Error'))   
-    
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+
     };
 
     const navigate = useNavigate();
